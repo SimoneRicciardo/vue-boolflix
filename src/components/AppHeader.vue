@@ -4,8 +4,8 @@
             <h1>BOOLFLIX</h1>
         </div>
         <div>
-            <input type="text" v-model="searchMovie" placeholder="Cerca" >
-            <button>Cerca</button>
+            <input type="text" v-model="inputText" placeholder="Cerca" @keyup.enter="$emit('search',inputText)">
+            <button  @click="$emit('search',inputText)">Cerca</button>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     name: 'AppHeader',
     data(){
         return{
-            searchMovie: ''
+            inputText: '',
         }
     },
 }

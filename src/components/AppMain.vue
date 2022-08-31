@@ -3,37 +3,32 @@
         <div>
             <img src="" alt="">
         </div>
-        <div>    
+        <div class="info-film">    
             <ul>
-                <li v-for="info in MovieList" :key="info.id" :info="info">{{info.title}}</li>
+                <li v-for="(info, index) in MovieList" :key="index">
+                    {{info.title}}-
+                    {{info.original_title}}-
+                    {{info.original_language}}-
+                    {{info.vote_average}}-
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
     name: 'AppMain',
-
-    data() {
-        return {
-            MovieList: [],
-        }
+    props: {
+        MovieList: Array
     },
-    created() {
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=b897f127a3dbd85d52cd82ed32fa6440&query=2001&language=it-IT')
-        .then((results) => {
-          this.MovieList = results.data.results;
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }    
+    
 }
 </script>
 
 <style lang="scss">
-
+    .container-main{
+        padding: 0 25px;
+    }
 </style>
