@@ -23,7 +23,11 @@ export default {
     props: {
         MovieList: Array
     },
-    
+    computed: {
+        flags(){
+            this.MovieList.forEach()
+        }
+    }
 }
 </script>
 
