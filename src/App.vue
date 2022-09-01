@@ -47,6 +47,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '~@fortawesome/fontawesome-free/css/all.css';
   @import './Style/GenericRule.scss';
 
 </style>

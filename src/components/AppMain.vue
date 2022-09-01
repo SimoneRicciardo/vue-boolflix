@@ -70,7 +70,7 @@ export default {
 
             .movie{
                 display: flex;
-                width: calc(100% / 3);
+                flex-wrap: nowrap;
             }
     }
 </style>
