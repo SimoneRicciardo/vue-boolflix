@@ -2,7 +2,7 @@
   <div id="app">
 
     <AppHeader @search="getSearchMovie"/>
-    <AppMain :MovieList="MovieList"/>
+    <AppMain :MovieList="MovieList" :TvList="TvList"/>
 
   </div>
 </template>
@@ -16,24 +16,30 @@ export default {
   name: 'App',
   components: {
     AppHeader,
-    AppMain
-  },
+    AppMain,
+},
 
   data(){
     return{
-      MovieList: []
+      MovieList: [],
+      TvList:[]
     }
-  },
+  },  
 
   methods: {
     getSearchMovie(text){
       axios.get('https://api.themoviedb.org/3/search/movie?api_key=b897f127a3dbd85d52cd82ed32fa6440&query=' + text + '&language=it-IT')
-      .then(res=> {
-        this.MovieList = res.data.results;
+      .then(response=> {
+        this.MovieList = response.data.results;
         console.log(this.MovieList)
       })
       .catch(err => {
         console.log(err)
+      })
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=b897f127a3dbd85d52cd82ed32fa6440&query=' + text + '&language=it-IT')
+      .then(response=> {
+        this.TvList = response.data.results;
+        console.log(this.TvList)
       })
     }
   }
